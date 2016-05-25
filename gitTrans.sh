@@ -22,7 +22,7 @@ then
 else
   # bash to push to toGit
   cd "$repo"
-  echo "Ready to push to $toGit"
+  echo "Prepare to push to $toGit"
   git fetch -p origin
   git push --no-verify --mirror
   cd ..
