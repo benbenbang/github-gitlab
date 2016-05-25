@@ -20,11 +20,11 @@ $ cd ~/repo.git
 ```
 ``` terminal
 # Push to GitHub：使用`--mirror` 及 `--no-verify` 
-$ git push --no-verify --mirror git@github.com:username/my-repo.git
+$ git push --no-verify --mirror git@github.com:username/repo.git
 ```
 ``` terminal
 # Set push URL to the mirror location
-$ git remote set-url --push origin git@github.com:username/my-repo.git
+$ git remote set-url --push origin git@github.com:username/repo.git
 ```
 ``` terminal
 # 要Update GitHub → GitLab
@@ -37,7 +37,7 @@ git push --no-verify --mirror
 同理，但是這個步驟可略
 ``` terminal
 # Set push URL to the mirror location
-$ git remote set-url --push origin git@github.com:username/my-repo.git
+$ git remote set-url --push origin git@github.com:username/repo.git
 ```
 
 ---
