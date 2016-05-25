@@ -9,7 +9,7 @@ usernameT="username on Gitlab"
 repo="Repo name"
 
 # Automatically Check and Do Our Job.
-# Don't need to change anything if your're not sure.
+# Don't need to change anything if you're not sure.
 if [ ! -e "$repo" ]
 then
   # bash to clone the repo.git for the First time usage
