@@ -1,4 +1,4 @@
-git clone --mirror git@your-gitlab-site.com:username/repo.git
+# bash gitlab.sh
 cd repo.git
 git push --no-verify --mirror git@github.com:username/my-repo.git
 git remote set-url --push origin git@github.com:username/my-repo.git
