@@ -34,12 +34,8 @@ git push --no-verify --mirror
 
 ---
 ### github ← gitlab
-同理，但是這個步驟可略
-``` terminal
-# Set push URL to the mirror location
-$ git remote set-url --push origin git@github.com:username/repo.git
-```
+同理
 
 ---
 ### Example: Gitlab.sh
-若懶得打字，可直接做一個如gitlab.sh，方便快速
+若懶得打字，可直接做一個如gitTrans.sh，方便快速
