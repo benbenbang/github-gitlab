@@ -1,31 +1,37 @@
 # Edit the following info first and save this file at the Repo folder.
-fromGit="git@github.com"
-toGit="git@gitlab.com"
-username="username"
-repo="repo.git"
+# from/toGit: github,gitlab...
+# usernameF/T: username on from/toGit, if not sure check git@your-git-server.com:username/repo.git
+# Repo name need no '.git'
+fromGit="github"
+toGit="gitlab"
+usernameF="username on Github"
+usernameT="username on Gitlab" 
+repo="Repo name"
 
-# Automatically check and do our job.
-# Don't have to change anything.
+# Automatically Check and Do Our Job.
+# Don't need to change anything if your're not sure.
 if [ ! -e "$repo" ]
 then
-  # bash to clone the repo.git for the First time usage 
+  # bash to clone the repo.git for the First time usage
   echo "Hi, $USER"
   echo "Please check the following info:"
   echo "You’re going to clone a repo from $fromGit to $toGit"
-  echo "And the username and repo are $username and $repo, respectively"
+  echo "The username on the $fromGit is $usernameF"
+  echo "and the username on the $toGit is $usernameT"
+  echo "The repo name is $repo"
   echo "Finally, make sure you have already created a empty repo on $toGit"
   while true; do
     echo -n "Is everything right? [ENTER:YES or NO]: "
     read answer
     case $answer in
-        [Yy]* )
-        echo "We're now preparing to clone the git from $fromGit to $toGit"
-        git clone --mirror "$fromGit":"$username"/"$repo"
-        echo "Done for cloning"
-        cd "$repo"
+        [Yy]* ) 
+        echo "We're now preparing to clone the git from $fromGit to $toGit" 
+        git clone --mirror "git@$fromGit.com":"$usernameF"/"$repo.git"
+        echo "Done for cloning."
+        cd "$repo.git"
         echo "Prepare to push to $toGit"
-        git push --no-verify --mirror "$toGit":"$username"/"$repo"
-        git remote set-url --push origin "$toGit":"$username"/"$repo"
+        git push --no-verify --mirror "git@$toGit.com":"$usernameT"/"$repo.git"
+        git remote set-url --push origin "git@$toGit.com":"$usernameT"/"$repo.git"
         cd ..
         break;;
         [Nn]* ) exit;;
@@ -34,8 +40,8 @@ then
   done
 else
   # bash to push to toGit
-  cd "$repo"
-  echo "Prepare to push to $toGit"
+  cd "$repo.git"
+  echo "Ready to push to $toGit"
   git fetch -p origin
   git push --no-verify --mirror
   cd ..
