@@ -1,9 +1,9 @@
-# Github ←→ Gitlab
+## Github ←→ Gitlab
 因為一些需要，有時需要將同一個Repo推到Github及Gitlab  
 以下是一些記錄  
 
 ---
-# github → gitlab
+### github → gitlab
 
 ``` terminal
 # 先回到家目錄
@@ -33,7 +33,7 @@ git push --no-verify --mirror
 ```
 
 ---
-# github ← gitlab
+### github ← gitlab
 同理，但是這個步驟可略
 ``` terminal
 # Set push URL to the mirror location
