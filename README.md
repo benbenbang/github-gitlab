@@ -39,3 +39,7 @@ git push --no-verify --mirror
 # Set push URL to the mirror location
 $ git remote set-url --push origin git@github.com:username/my-repo.git
 ```
+
+---
+### Example: Gitlab.sh
+若懶得打字，可直接做一個如gitlab.sh，方便快速
