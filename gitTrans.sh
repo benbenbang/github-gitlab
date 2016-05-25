@@ -13,6 +13,7 @@ then
   echo "Please check the following info:"
   echo "You’re going to clone a repo from $fromGit to $toGit"
   echo "And the username and repo are $username and $repo, respectively"
+  echo "Finally, make sure you have already created a empty repo on $toGit"
   while true; do
     echo -n "Is everything right? [ENTER:YES or NO]: "
     read answer
