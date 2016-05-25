@@ -19,7 +19,7 @@ then
   echo "The username on the $fromGit is $usernameF"
   echo "and the username on the $toGit is $usernameT"
   echo "The repo name is $repo"
-  echo "Finally, make sure you have already created a empty repo on $toGit"
+  echo "Finally, make sure you already have a empty repo as the same name $repo on $toGit"
   while true; do
     echo -n "Is everything right? [ENTER:YES or NO]: "
     read answer
