@@ -10,7 +10,7 @@ repo="Repo name"
 
 # Automatically Check and Do Our Job.
 # Don't need to change anything if you're not sure.
-if [ ! -e "$repo" ]
+if [ ! -e "$repo".git ]
 then
   # bash to clone the repo.git for the First time usage
   echo "Hi, $USER"
@@ -19,7 +19,7 @@ then
   echo "The username on the $fromGit is $usernameF"
   echo "and the username on the $toGit is $usernameT"
   echo "The repo name is $repo"
-  echo "Finally, make sure you already have a empty repo as the same name $repo on $toGit"
+  echo "Finally, make sure you already have a empty repo with the same name $repo on $toGit"
   while true; do
     echo -n "Is everything right? [ENTER:YES or NO]: "
     read answer
