@@ -9,7 +9,7 @@
 1. 由**舊目標**Repo `clone --mirror`[^1] 這邊的例子是我要從原先在Gitlab Repo先複製  
 2. 接下來 `push --no-verify --mirror`[^2] 到在Github的**新目標**Repo  
 3. 最後 `remote set-url --push origin` 目的是更新原先git中的origin url  
-4. 未來push至gitlab後，cd至新的git資料夾中，先fetch再push
+4. 未來push至gitlab後，cd至新的git資料夾中，先fetch再push  
 5. 若要原封不動直接移至Github，直接在Repo裡 `remote set-url origin` 吧！   
 
 ``` Terminal
