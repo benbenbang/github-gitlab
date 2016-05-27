@@ -12,6 +12,7 @@
 4. 未來push至gitlab後，cd至新的git資料夾中：
    * git fetch -p origin  
    * git push --no-verify --mirror  
+
 5. 若要原封不動直接移至Github，直接在Repo裡 `remote set-url origin` 吧！   
 
 ``` Terminal
