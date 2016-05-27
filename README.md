@@ -10,9 +10,8 @@
 2. 接下來 `push --no-verify --mirror`[^2] 到在Github的**新目標**Repo  
 3. 最後 `remote set-url --push origin` 目的是更新原先git中的origin url  
 4. 未來push至gitlab後，cd至新的git資料夾中：
-   * git fetch -p origin  
-   * git push --no-verify --mirror  
-
+  * git fetch -p origin  
+  * git push --no-verify --mirror  
 5. 若要原封不動直接移至Github，直接在Repo裡 `remote set-url origin` 吧！   
 
 ``` Terminal
