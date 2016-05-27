@@ -48,25 +48,7 @@
 4. 未來push至gitlab後，cd至新的git資料夾中，先fetch再push<br>
 5. 若要原封不動直接移至Github，直接在Repo裡 <code>remote set-url origin</code> 吧！   </p>
 
-<pre lang="Terminal"><code># Assume DIR Repo: /Users/username/Desktop/Repo
-$ cd /Users/username/Desktop/Repo
-$ git clone --mirror git@gitlab.com:username/Repo.git
-
-# As I mentioned in the footnote about `--mirror` which impiles `--bare` may hence create a # visible Repo.git directory
-$ cd ~/Repo.git
-
-# Push to GitHub by using the `--mirror` option.
-# The `--no-verify` option skips any hooks. 
-$ git push --no-verify --mirror git@github.com:username/Repo.git
-
-# Set push URL to the mirror location
-$ git remote set-url --push origin git@github.com:username/Repo.git
-
-
-# To periodically update the Repo on GitHub with what you have in GitLab
-$ git fetch -p origin
-$ git push --no-verify --mirror
-</code></pre>
+<script src="https://gist.github.com/benbenbang/3844c18a66a5db61f08e05a01868f439.js"></script>
 
 <hr>
 
