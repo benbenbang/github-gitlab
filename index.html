@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Git Migration by benbenbang</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Git Migration</h1>
+        <p>github, gitlab, git, migrate, moving</p>
+
+        <p class="view"><a href="https://github.com/benbenbang/github-gitlab">View the Project on GitHub <small>benbenbang/github-gitlab</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/benbenbang/github-gitlab/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/benbenbang/github-gitlab/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/benbenbang/github-gitlab">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="moving-from-gitlab-to-github-or-vice-versa" class="anchor" href="#moving-from-gitlab-to-github-or-vice-versa" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Moving from Gitlab to Github, or vice versa</h1>
+
+<h2>
+<a id="前言" class="anchor" href="#%E5%89%8D%E8%A8%80" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>前言</h2>
+
+<p>使用Gitlab工作一段時間，使用上也感覺不錯，然而一些專案或團隊合作需求，有一些原本在Gitlab的Repo需要同步更新到Github，因此研究了一下該如何操作，以下是一些記錄。而以下這些步驟，雖說是討論Github和Gitlab，但基本上只要是git應該都不是問題。</p>
+
+<hr>
+
+<h2>
+<a id="基本步驟" class="anchor" href="#%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%A9%9F" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>基本步驟</h2>
+
+<p>概念很簡單：部分留（1-4）或直接全改(5)<br>
+1. 由<strong>舊目標</strong>Repo <code>clone --mirror</code>[^1] 這邊的例子是我要從原先在Gitlab Repo先複製<br>
+2. 接下來 <code>push --no-verify --mirror</code>[^2] 到在Github的<strong>新目標</strong>Repo<br>
+3. 最後 <code>remote set-url --push origin</code> 目的是更新原先git中的origin url<br>
+4. 未來push至gitlab後，cd至新的git資料夾中，先fetch再push<br>
+5. 若要原封不動直接移至Github，直接在Repo裡 <code>remote set-url origin</code> 吧！   </p>
+
+<pre lang="Terminal"><code># Assume DIR Repo: /Users/username/Desktop/Repo
+$ cd /Users/username/Desktop/Repo
+$ git clone --mirror git@gitlab.com:username/Repo.git
+
+# As I mentioned in the footnote about `--mirror` which impiles `--bare` may hence create a # visible Repo.git directory
+$ cd ~/Repo.git
+
+# Push to GitHub by using the `--mirror` option.
+# The `--no-verify` option skips any hooks. 
+$ git push --no-verify --mirror git@github.com:username/Repo.git
+
+# Set push URL to the mirror location
+$ git remote set-url --push origin git@github.com:username/Repo.git
+
+
+# To periodically update the Repo on GitHub with what you have in GitLab
+$ git fetch -p origin
+$ git push --no-verify --mirror
+</code></pre>
+
+<hr>
+
+<h2>
+<a id="bash-instruction" class="anchor" href="#bash-instruction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bash Instruction</h2>
+
+<p>由於直接全改的操作方式很直觀，也沒共存麻煩，因此檔案只是為了方便需要共存所建立的，然後會囉嗦地先再三確認後才行動。<br>
+.sh裡只要自行修改以下5個變數<br>
+1. <code>fromGit="github"</code> # 舊目標Repo在哪<br>
+2. <code>toGit="gitlab"</code> # 新目標要送去哪<br>
+3. <code>usernameF="username on Github"</code> # 在Github上的Username<br>
+4. <code>usernameT="username on Gitlab"</code> # 在Gitlab上的Username<br>
+5. <code>repo="Repo name"</code> # Repo名<br>
+   將檔案放在Repo的資料夾中 <code>bash migrate.sh</code><br>
+   首次較為話癆，如果要同步的話就是一行換四行了...  </p>
+
+<p>[^1] <code>--mirror</code>：同時imply使用<code>--bare</code>，也就是創建一個「赤裸」可見的Repo.git之外，同時會將local branches的所有tracked file, notes...全部一併map到新的Repo.git，This is what we want!<br>
+[^2] <code>--no-verify</code>：由於在git/hooks下有時會放一些分析或測試檔，但複製到新工作團隊的Repo時不見得要使用這些scripts，因此用<code>--no-verify</code>，而push中的default為<code>--verify</code>  </p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/benbenbang">benbenbang</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
