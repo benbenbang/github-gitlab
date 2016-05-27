@@ -47,5 +47,5 @@ $ git push --no-verify --mirror
    將檔案放在Repo的資料夾中 `bash migrate.sh`   
    首次較為話癆，如果要同步的話就是一行換四行了...  
 
-[^1]: `--mirror`：同時imply使用`--bare`，也就是創建一個「赤裸」可見的Repo.git之外，同時會將local branches的所有tracked file, notes...全部一併map到新的Repo.git，This is what we want!  
-[^2]: `--no-verify`：由於在git/hooks下有時會放一些分析或測試檔，但複製到新工作團隊的Repo時不見得要使用這些scripts，因此用`--no-verify`，而push中的default為`--verify`  
+[^1] `--mirror`：同時imply使用`--bare`，也就是創建一個「赤裸」可見的Repo.git之外，同時會將local branches的所有tracked file, notes...全部一併map到新的Repo.git，This is what we want!  
+[^2] `--no-verify`：由於在git/hooks下有時會放一些分析或測試檔，但複製到新工作團隊的Repo時不見得要使用這些scripts，因此用`--no-verify`，而push中的default為`--verify`  
