@@ -10,7 +10,7 @@ repo="Repo name"
 
 # Automatically Check and Do Our Job.
 # Don't need to change anything if you're not sure.
-if [ ! -e "$repo" ]
+if [ ! -e "$repo.git" ]
 then
   # bash to clone the repo.git for the First time usage
   echo "Hi, $USER"
