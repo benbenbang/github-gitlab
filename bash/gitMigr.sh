@@ -1,12 +1,37 @@
+
+gitMigr() {
 # Edit the following info first and save this file at the Repo folder.
 # from/toGit: github,gitlab...
 # usernameF/T: username on from/toGit, if not sure check git@your-git-server.com:username/repo.git
 # Repo name need no '.git'
-fromGit="github"
-toGit="gitlab"
+MYPWD=${PWD}
+VAR="${MYPWD##*/}"
+DIR=$(grep 'git@github.com' .git/config)
+if grep -q 'git@github.com' .git/config ; then 
+	fromGit='github'
+	toGit="gitlab"
+elif grep -q 'git@gitlab.com' .git/config ; then 
+	fromGit='gitlab'
+	toGit="github"
+else
+	while true; do
+		echo "I cannot find git config from Github or Gitlab in current directory"
+		echo -n "Do you want to type your git server manually [ENTER:YES or NO]: "
+		read answer
+		case $answer in
+			[Yy]* )
+			cp migrate.sh $MYPWD 
+			echo "Okay, I've copy a bash file to $MYPWD, Edit then Push!"
+			exit;;
+			[Nn]* ) exit;;
+			*) echo "Please answer yes or no.";;
+		esac
+	done
+fi
+
 usernameF="username on Github"
 usernameT="username on Gitlab" 
-repo="Repo name"
+repo=${DIR:33}
 
 # Automatically Check and Do Our Job.
 # Don't need to change anything if you're not sure.
@@ -34,7 +59,7 @@ then
         git remote set-url --push origin "git@$toGit.com":"$usernameT"/"$repo.git"
         cd ..
         break;;
-        [Nn]* ) exit;;
+        [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
   done
@@ -46,3 +71,4 @@ else
   git push --no-verify --mirror
   cd ..
 fi
+}
